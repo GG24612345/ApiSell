@@ -9,7 +9,7 @@ async function GetToken(Token) {
 
   const { data, error } = await supabase
     .from("Token")
-    .select("Token, is_valid")
+    .select("Token", "is_valid")
     .eq("Token", Token)
     .single();
 
@@ -24,5 +24,6 @@ async function GetToken(Token) {
 
 export default async function handler(req, res) {
   const { Token } = req.query;
-  return res.status(200).json(await GetToken(Token));
+  return res.status(200).json(Token);
 }
+
