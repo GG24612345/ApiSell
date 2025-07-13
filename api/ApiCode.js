@@ -5,29 +5,34 @@ const Supa_Key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsI
 const supabase = createClient(Supa_Url, Supa_Key);
 
 async function GetToken(Token) {
+  console.log("[GetToken] Token recebido para busca:", Token);
+
   const { data, error } = await supabase
     .from("Token")
-    .select("Token, is_valid")   // 👈 seleciona as 2 colunas
-    .eq("Token", Token)          // 👈 faz o filtro onde Token = Token passado
-    .single();                   // 👈 espera 1 resultado (erro se não achar)
+    .select("Token, is_valid")
+    .eq("Token", Token)
+    .single();
 
   if (error) {
-    console.log(error);
+    console.log("[GetToken] Erro ao buscar token:", error);
     return null;
   }
 
-  return data;  // { Token: ..., is_valid: ... }
+  console.log("[GetToken] Dados encontrados:", data);
+  return data;
 }
-
 
 export default async function handler(req, res) {
   const { Token } = req.query;
+  console.log("[API] Token recebido na requisição:", Token);
 
   const response = await GetToken(Token);
 
   if (!response) {
+    console.log("[API] Token não encontrado, retornando 404");
     return res.status(404).json({ error: "Token não encontrado" });
   }
 
+  console.log("[API] Token válido encontrado, retornando dados");
   return res.status(200).json(response);
 }
