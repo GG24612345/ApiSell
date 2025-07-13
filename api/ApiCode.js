@@ -24,15 +24,5 @@ async function GetToken(Token) {
 
 export default async function handler(req, res) {
   const { Token } = req.query;
-  console.log("[API] Token recebido na requisição:", Token);
-
-  const response = await GetToken(Token);
-
-  if (!response) {
-    console.log("[API] Token não encontrado, retornando 404");
-    return res.status(404).json({ error: "Token não encontrado" });
-  }
-
-  console.log("[API] Token válido encontrado, retornando dados");
-  return res.status(200).json(response);
+  return res.status(200).json(Token);
 }
