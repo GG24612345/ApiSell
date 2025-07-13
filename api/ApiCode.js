@@ -24,5 +24,5 @@ async function GetToken(Token) {
 
 export default async function handler(req, res) {
   const { Token } = req.query;
-  return res.status(200).json(Token);
+  return res.status(200).json(await GetToken(Token));
 }
