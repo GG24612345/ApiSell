@@ -28,5 +28,5 @@ export default async function handler(req, res) {
 }
 //git status
 //git add .
-//git commit -m "Corrigindo Supa"
+//git commit -m "Colocando type"
 //git push
