@@ -8,7 +8,7 @@ async function GetToken(Token) {
   console.log("[GetToken] Token recebido para busca:", Token);
 
   const { data, error } = await supabase
-    .from("Token")
+    .from("Tokens")
     .select("is_valid")
     .eq("Token", Token)
     .single();
