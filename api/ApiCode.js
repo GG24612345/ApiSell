@@ -15,7 +15,7 @@ async function GetToken(Token) {
 
   if (error) {
     console.log("[GetToken] Erro ao buscar token:", error);
-    return null;
+    return "Token não achado";
   }
 
   console.log("[GetToken] Dados encontrados:", data);
