@@ -1,4 +1,4 @@
 git status
 git add .
-git commit -m "add temp/models"
+git commit -m "add supa-args"
 git push
