@@ -9,7 +9,7 @@ async function GetToken(Token) {
 
   const { data, error } = await supabase
     .from("Tokens")
-    .select("is_valid", "type")
+    .select("is_valid, type")
     .eq("Token", Token)
     .single();
 
