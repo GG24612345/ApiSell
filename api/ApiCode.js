@@ -9,7 +9,7 @@ async function GetToken(Token) {
 
   const { data, error } = await supabase
     .from("Tokens")
-    .select("is_valid, type")
+    .select("is_valid, type, model, temperature")
     .eq("Token", Token)
     .single();
 
@@ -28,5 +28,5 @@ export default async function handler(req, res) {
 }
 //git status
 //git add .
-//git commit -m "Colocando type"
+//git commit -m "add temp/models"
 //git push
