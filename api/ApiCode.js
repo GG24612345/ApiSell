@@ -9,7 +9,7 @@ async function GetToken(Token) {
 
   const { data, error } = await supabase
     .from("Token")
-    .select("Token", "is_valid")
+    .select("is_valid")
     .eq("Token", Token)
     .single();
 
@@ -26,4 +26,7 @@ export default async function handler(req, res) {
   const { Token } = req.query;
   return res.status(200).json(await GetToken(Token));
 }
-
+//git status
+//git add .
+//git commit -m "Corrigindo Supa"
+//git push
